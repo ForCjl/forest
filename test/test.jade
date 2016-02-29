@@ -1,0 +1,77 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		title test jade 
+		-var course = 'test', data = '<div>hhhh</div>'
+	body 
+		h1 test jade
+		h2 test jade2
+		h3 tet jade3
+		div.cl#jj
+		div(id='a')
+		a(href='http://www.baidu.com')
+		p
+			| 1.a
+			strong ss
+			| 2.b
+		p 转义
+		div #{data}
+			a
+		p 不转义
+		div !{data}
+
+		div=data
+		div!=data
+		div\!{data}
+		p 取不到值就“undefined”
+		input(value="#{mydate}")
+		input(value=test)
+		P 取不到值就为空
+			input(value=mydate)
+
+
+		p 循环
+		
+		-var datas = {course:1,time:"now", where:"here"}
+		ul
+			- for(var i in datas)
+				li #{datas[i]}
+
+		ul
+			each value ,key in datas
+				li #{key} : #{value}
+
+		-var arr = ["1", "s" ,"sss"]
+		each item in arr
+			div=item
+
+
+		-var co = [{id: "1" , name:"name1" , ii : ["a","b"]} ]
+		dl
+			each cc in co
+				dt #{cc.id}
+					each g in cc.ii
+						dd #{g}
+			
+
+
+		p if-else流程
+
+		-var isFirst = false
+		if isFirst
+			p false
+		else 
+			div true
+
+
+		unless isFirst
+			div unless False 
+
+		-var name = "China"
+		case name
+			when "England"
+			when "China"
+				h3 中国
+			default 
+				h2 别的
